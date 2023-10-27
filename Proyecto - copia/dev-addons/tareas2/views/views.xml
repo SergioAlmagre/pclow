@@ -1,0 +1,158 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="tareas2.list">
+      <field name="name">Tareas list</field>
+      <field name="model">tareas2.tareas2</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre"/>
+          <field name="descripcion"/>
+          <field name="horas"/>
+          <field name="fechaCreacion"/>
+          <field name="fechaComienzo"/>
+          <field name="fechaFinal"/>
+          <field name="pausada"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="tareas2.form">
+      <field name="name">Tareas form</field>
+      <field name="model">tareas2.tareas2</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="nombre"/>
+            <field name="descripcion"/>
+            <field name="horas"/>
+            <field name="fechaCreacion"/>
+            <field name="fechaComienzo"/>
+            <field name="fechaFinal"/>
+            <field name="pausada"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+
+
+    <record model="ir.ui.view" id="tareas2.list_sprint2">
+      <field name="name">sprint list</field>
+      <field name="model">tareas2.sprint2</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre"/>
+          <field name="descripcion"/>
+          <field name="fechaCreacion"/>
+          <field name="fechaFinal"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="tareas2.form_sprint2">
+      <field name="name">Tareas form</field>
+      <field name="model">tareas2.sprint2</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="nombre"/>
+            <field name="descripcion"/>
+            <field name="fechaCreacion"/>
+            <field name="fechaFinal"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+
+
+    <record model="ir.ui.view" id="tareas2.list_tecnologias2">
+      <field name="name">tecnologias list</field>
+      <field name="model">tareas2.tecnologias2</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre"/>
+          <field name="imagen" widget="image" options='{"max_width": 200, "max_height": 200}'/>
+        </tree>
+      </field>
+    </record> 
+
+    
+    <record model="ir.ui.view" id="tareas2.form_tecnologias2">
+      <field name="name">Tareas form</field>
+      <field name="model">tareas2.tecnologias2</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="nombre"/>
+            <field name="imagen" widget="image" options='{"max_width": 200, "max_height": 200}'/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="tareas2.action_window">
+      <field name="name">Administración</field>
+      <field name="res_model">tareas2.tareas2</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="tareas2.action_window_sprint">
+      <field name="name">Administración</field>
+      <field name="res_model">tareas2.sprint2</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="tareas2.action_window_tecnologias">
+      <field name="name">Administración</field>
+      <field name="res_model">tareas2.tecnologias2</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="tareas.action_server">
+      <field name="name">Tareas server</field>
+      <field name="model_id" ref="model_tareas_tareas"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="Tareas" id="tareas2.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Tareas" id="tareas2.menu_1" parent="tareas2.menu_root"/>
+    <menuitem name="Sprint" id="tareas2.menu_2" parent="tareas2.menu_root"/> 
+    <menuitem name="Tecnologias" id="tareas2.menu_3" parent="tareas2.menu_root"/> 
+    <!-- actions -->
+
+    <menuitem name="Tarea" id="tareas2.menu_1_list" parent="tareas2.menu_1"
+              action="tareas2.action_window"/>
+
+    <menuitem name="Sprint" id="tareas2.menu_2_list" parent="tareas2.menu_2"
+              action="tareas2.action_window_sprint"/>
+
+    <menuitem name="Tecnologia" id="tareas2.menu_3_list" parent="tareas2.menu_3"
+              action="tareas2.action_window_tecnologias"/> 
+
+<!--    <menuitem name="Server to list" id="tareas" parent="tareas.menu_2"
+              action="tareas.action_server"/> -->
+
+  </data>
+</odoo>
